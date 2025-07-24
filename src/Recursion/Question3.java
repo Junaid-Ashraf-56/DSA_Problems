@@ -1,8 +1,8 @@
 package Recursion;
 
-//Question 4: Sum of n Numbers
-// Question 4.1 :Sum of digits
-//Question 4.2 : Product of digits
+//Question 3: Sum of n Numbers
+//Question 3.1 :Sum of digits
+//Question 3.2 : Product of digits
 public class Question3 {
     public static int Sum(int n){
         if (n==1){
