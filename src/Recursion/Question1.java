@@ -6,7 +6,7 @@ package Recursion;
 
 /*Difference between n-- and --n
  * in n-- the program first pass the value and then decrement by which if we use it in recursion like return num(n--) it will never decrement
- * and give stack over flow error
+ * and give stack overflow error
  *
  * in --n the program first decrement and then pass th value by which it will pass correctly in this case*/
 
