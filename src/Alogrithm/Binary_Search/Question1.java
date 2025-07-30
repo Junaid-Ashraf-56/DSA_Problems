@@ -2,8 +2,8 @@ package Alogrithm.Binary_Search;
 //Question 1: Give the target element in an array with the help of binary search?
 public class Question1 {
     public static int binary(int[] array,int target){
-        int start = array[0];
-        int end = array[array.length-1];
+        int start = 0;
+        int end = array.length-1;
         while (start<=end){
             int mid = start+(end-start)/2;
             if(array[mid]==target){
