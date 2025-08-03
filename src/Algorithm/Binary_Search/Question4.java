@@ -1,4 +1,4 @@
-package Alogrithm.Binary_Search;
+package Algorithm.Binary_Search;
 //Question 4: Floor of a number?
 public class Question4 {
     public static int floorOfNumber(int[] array,int target){

@@ -1,4 +1,4 @@
-package Alogrithm.Binary_Search;
+package Algorithm.Binary_Search;
 //Question 1: Give the target element in an array with the help of binary search?
 public class Question1 {
     public static int binary(int[] array,int target){

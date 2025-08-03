@@ -1,4 +1,4 @@
-package Alogrithm.Binary_Search;
+package Algorithm.Binary_Search;
 //Question 3:Ceiling of a number ?
 //Ceiling is the smallest number in the array which is greater than or equal to that number
 public class Question3 {

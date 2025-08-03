@@ -1,4 +1,4 @@
-package Alogrithm.Linear_Search;
+package Algorithm.Linear_Search;
 
 //Question 2: find the target within a range
 //Question 2.1: find the target in 2D array

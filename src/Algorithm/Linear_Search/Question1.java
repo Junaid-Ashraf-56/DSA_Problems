@@ -1,4 +1,4 @@
-package Alogrithm.Linear_Search;
+package Algorithm.Linear_Search;
 
 public class Question1 {
     public static boolean found(String name,char target){

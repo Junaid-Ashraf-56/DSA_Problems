@@ -1,4 +1,4 @@
-package Alogrithm.Binary_Search;
+package Algorithm.Binary_Search;
 
 //Question 5:Find the target element in the array while the array is of infinite length ?
 public class Question5 {

@@ -1,4 +1,4 @@
-package Alogrithm.Linear_Search;
+package Algorithm.Linear_Search;
 
 //Question 3:Find the minimum number
 //Question 3.1:Search in 2D array

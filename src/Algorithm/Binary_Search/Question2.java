@@ -1,4 +1,4 @@
-package Alogrithm.Binary_Search;
+package Algorithm.Binary_Search;
 
 //Question 2:Order Agnostic binary search
 public class Question2 {
