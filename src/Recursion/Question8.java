@@ -6,7 +6,7 @@ public class Question8 {
         if(start>end){return -1;}
         int mid = start+(end-start)/2;
         if (nums[mid]==target){
-            return nums[mid];
+            return mid;
         }
         if(nums[start]<=nums[mid]){
             if (target>=nums[start] && target<=nums[mid]){
