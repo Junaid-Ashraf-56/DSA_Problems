@@ -1,7 +1,7 @@
 package Stack.Lab.Activity;
 
 //Implement Dynamic Stack.
-public class Dynamic_Stack{
+class Dynamic_Stack{
     private int size;
     private char[] arr;
     private int top;

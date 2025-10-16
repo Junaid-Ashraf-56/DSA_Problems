@@ -1,4 +1,4 @@
 package Stack.Lab.Task;
 
-public class Task2 {
+public class Task3 {
 }

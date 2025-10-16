@@ -31,11 +31,15 @@ class Dynamic_Stack{
 
     char pop(){
         if (isEmpty()){
-            System.out.println("Array is Empty");
-            return '0';
+            return '\0';
         }
 
         return arr[--top];
+    }
+
+    char peek() {
+        if (isEmpty()) return '\0';
+        return arr[top - 1];
     }
 
     void display(){
@@ -53,7 +57,7 @@ class Dynamic_Stack{
 }
 
 
-class Check_Parenthesis{
+class Balance_Parenthesis{
     Dynamic_Stack dynamicStack = new Dynamic_Stack();
 
     private boolean balance(char inStack,char outOfStack){
@@ -63,15 +67,28 @@ class Check_Parenthesis{
                         (inStack=='('&&outOfStack==')')
         );
     }
+    private int getPriority(char ch) {
+        return switch (ch) {
+            case '[' -> 3; // Highest
+            case '{' -> 2;
+            case '(' -> 1; // Lowest
+            default -> 0;
+        };
+    }
     void check(String para){
         for (int i = 0; i < para.length(); i++) {
-            char a = para.charAt(i);
-            if (a=='{'|| a=='['|| a=='(')
-            {
-                dynamicStack.push(a);
-            } else {
-                if (a=='}'|| a==']'|| a==')'){
-                    if (!balance(dynamicStack.pop(),a)){
+            char ch = para.charAt(i);
+
+            if (ch == '(' || ch == '{' || ch == '[') {
+                if (!dynamicStack.isEmpty() && getPriority(ch) > getPriority(dynamicStack.peek())) {
+                    System.out.println("Invalid order at character '" + ch + "'");
+                    return;
+                }
+                dynamicStack.push(ch);
+            }else {
+                if (ch=='}'|| ch==']'|| ch==')'){
+                    char b = dynamicStack.pop();
+                    if (!balance(b,ch)){
                         System.out.println("Not Balanced Parenthesis");
                         return;
                     }
@@ -79,7 +96,7 @@ class Check_Parenthesis{
             }
         }
         if (dynamicStack.isEmpty()){
-            System.out.println("Balanced Parenthesis");
+            System.out.println("Balanced Parenthesis In Correct Order");
         }else {
             System.out.println("Not Balanced Parenthesis");
         }
@@ -87,8 +104,8 @@ class Check_Parenthesis{
 }
 public class Task1 {
     public static void main(String[] args) {
-        Check_Parenthesis checkParenthesis = new Check_Parenthesis();
-        String para = "{[[()]]}";
+        Balance_Parenthesis checkParenthesis = new Balance_Parenthesis();
+        String para = "{[()]}";
         checkParenthesis.check(para);
     }
 }
