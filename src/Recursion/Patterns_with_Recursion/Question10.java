@@ -1,4 +1,4 @@
-package Recursion;
+package Recursion.Patterns_with_Recursion;
 //Question 10:Draw Triangle?
 //*
 //**
