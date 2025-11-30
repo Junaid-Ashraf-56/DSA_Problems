@@ -1,4 +1,4 @@
-package Recursion;
+package Recursion.Sorting_with_Recursion;
 
 import java.util.Arrays;
 
@@ -8,13 +8,13 @@ public class Question11 {
         if(row==0){
             return;
         }
-        if (column<row){
+        if (column < row){
             if (arr[column]>arr[column+1]){
                 int temp = arr[column];
                 arr[column] = arr[column+1];
                 arr[column+1] = temp;
             }
-            bubble(arr,row,column+1);
+            bubble(arr, row, column+1);
         }else {
             bubble(arr,row-1,0);
         }

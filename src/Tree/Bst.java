@@ -1,5 +1,4 @@
 package Tree;
-
 public class Bst {
     int data;
     Bst left;
@@ -24,7 +23,7 @@ public class Bst {
         Bst parent = null;
         Bst current = root;
 
-        while (current!= null){
+        while (current != null){
             parent = current;
 
             if (current.data<value){
@@ -42,13 +41,71 @@ public class Bst {
         return newValue;
     }
 
-    public void insert_recursive(Bst root, Bst current){
-        if (root == null){
-            root =current;
-        }else{
-            
+    public Bst insert_recursive(Bst root, int value){
+        if (root == null) {
+            return new Bst(value);
+        }
+        if (value < root.data) {
+            root.left = insert_recursive(root.left, value);
+        } else {
+            root.right = insert_recursive(root.right, value);
+        }
+        return root;
+    }
+
+
+
+    public boolean search(Bst root, int value) {
+        if (root == null) {
+            return false;
+        }
+        if (root.data == value) {
+            return true;
+        }
+        if (value < root.data) {
+            return search(root.left, value);
+        } else {
+            return search(root.right, value);
         }
     }
+
+    public void min_and_max(Bst root){
+        if (root!=null){
+            min_helper(root.right);
+            max_helper(root.left);
+        }
+    }
+    public void max_helper(Bst root){
+        if (root!=null){
+            if (root.left == null){
+                System.out.println("Max value is" + root.data);
+            }
+            min_helper(root.left);
+        }
+    }
+
+    public void min_helper(Bst root){
+        if (root!=null){
+            if (root.right == null){
+                System.out.println("Min value is" + root.data);
+            }
+            min_helper(root.right);
+        }
+    }
+//    public void sum(Bst root,int ans,int numOfNodes){
+//        if (root!=null){
+//            inorder(root.left);
+//            ans+= root.data;
+//            numOfNodes++;
+//            inorder(root.right);
+//            ans+= root.data;
+//            numOfNodes++;
+//            if (root.left == null){
+//                System.out.println( ans+ " " +numOfNodes);
+//            }
+//        }
+//    }
+
     public void inorder(Bst root){
         if (root!=null){
             inorder(root.left);
@@ -85,8 +142,12 @@ public class Bst {
         tree.insert_Node(6);
         tree.insert_Node(8);
 
-
-
+//        tree.sum(root,0,0);
+        tree.insert_recursive(root,9);
+        System.out.println();
+        tree.min_and_max(root);
+        System.out.println();
+        System.out.println(tree.search(root,5));
         tree.inorder(root);
         System.out.println();
         tree.preorder(root);

@@ -1,4 +1,4 @@
-package Recursion;
+package Recursion.Sorting_with_Recursion;
 
 import java.util.Arrays;
 
@@ -18,8 +18,9 @@ public class Question12 {
             int temp = arr[max];
             arr[max] = arr[row-1];
             arr[row-1] = temp;
-            selection(arr,row-1,0,0);
+            selection(arr, row-1,0,0);
         }
+
     }
     public static void main(String[] args) {
         int[] arr = {4,3,2,1};

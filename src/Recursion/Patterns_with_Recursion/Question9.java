@@ -6,18 +6,20 @@ package Recursion.Patterns_with_Recursion;
 //**
 //*
 public class Question9 {
-    public static int triangle(int n){
-     if(n==0){
-        return 1;
-     }
-        for (int i = 0; i < n; i++) {
+    public static void triangle(int row,int col){
+        if(row==0)return;
+        if (col<row) {
             System.out.print("*");
+            triangle(row,col+1);
+        }else {
+            System.out.println();
+            triangle(row-1,0);
         }
-        System.out.println();
-        return triangle(n-1);
+
     }
     public static void main(String[] args) {
         int n = 4;
-        triangle(n);
+        int col = 0;
+        triangle(n,col);
     }
 }
