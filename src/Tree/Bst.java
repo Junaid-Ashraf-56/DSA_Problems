@@ -86,8 +86,11 @@ public class Bst {
 
     public void min_helper(Bst root){
         if (root!=null){
-            if (root.right == null){
+            if (root.right == null && root.left == null){
                 System.out.println("Min value is" + root.data);
+            }
+            if (root.right == null && root.left!=null){
+                System.out.println("Min value is "+root.left.data);
             }
             min_helper(root.right);
         }
