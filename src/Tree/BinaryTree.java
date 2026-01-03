@@ -1,7 +1,5 @@
 package Tree;
 
-import java.util.Scanner;
-
 public class BinaryTree {
     private static class Node{
         int value;
@@ -15,50 +13,45 @@ public class BinaryTree {
 
     private Node root;
 
-    public void populate(Scanner scanner){
-        System.out.println("Enter the root node ");
-        int value = scanner.nextInt();
-        this.root = new Node(value);
-
-        populate(scanner,root);
-    }
-    private void populate(Scanner scanner,Node root){
-        System.out.println("If you want to put on left side of "+root.value);
-        boolean left = scanner.nextBoolean();
-        if (left){
-            int val = scanner.nextInt();
-            root.left = new Node(val);
-            populate(scanner,root.left);
-        }
-
-        System.out.println("If you want to put on right side of "+root.value);
-        boolean right = scanner.nextBoolean();
-        if (right){
-            int val = scanner.nextInt();
-            root.right = new Node(val);
-            populate(scanner,root.right);
-        }
-    }
-
-    public void display(){
-        display(root,"");
-    }
-    private void display(Node root,String indent){
+    public void insert(int value){
+        Node node = new Node(value);
         if (root==null){
+            root = node;
             return;
         }
 
-        System.out.println(indent + root.value);
-        display(root.left,indent+"\t");
-        display(root.right,indent+"\t");
+        Node current = root;
+        Node parent = null;
 
+        while (current!=null){
+            parent = current;
+            current = (current.value > node.value)?current.left:current.right;
+        }
+
+        if (parent.value > node.value){
+            parent.left = node;
+        }else {
+            parent.right = node;
+        }
     }
 
-
+    public void preOrder(){
+        helper(root);
+    }
+    private void helper(Node root){
+        if (root==null){
+            return;
+        }
+        System.out.print(root.value + " ");
+        helper(root.left);
+        helper(root.right);
+    }
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
         BinaryTree tree = new BinaryTree();
-        tree.populate(scanner);
-        tree.display();
+        tree.insert(45);
+        tree.insert(30);
+        tree.insert(50);
+
+        tree.preOrder();
     }
 }

@@ -39,7 +39,6 @@ public class BinarySearchTree {
         System.out.print(root.value);
         inorder(root.right);
     }
-
     int getHeight(Node node){
         if(node == null){
             return -1;
