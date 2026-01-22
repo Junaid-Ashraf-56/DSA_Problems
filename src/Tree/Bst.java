@@ -1,4 +1,7 @@
 package Tree;
+
+import java.util.*;
+
 public class Bst {
     int data;
     Bst left;
@@ -55,12 +58,12 @@ public class Bst {
 
 
 
-    public boolean search(Bst root, int value) {
+    public Bst search(Bst root, int value) {
         if (root == null) {
-            return false;
+            return null;
         }
         if (root.data == value) {
-            return true;
+            return root;
         }
         if (value < root.data) {
             return search(root.left, value);
@@ -109,6 +112,20 @@ public class Bst {
 //        }
 //    }
 
+    public  void bfsOrder(Bst root){
+        Queue<Bst> queue= new ArrayDeque<>();
+        if (root==null){
+            return;
+        }
+        queue.add(root);
+        while (!queue.isEmpty()){
+            Bst current = queue.poll();
+            if (current.left!= null)queue.add(current.left);
+            if (current.right!=null)queue.add(current.right);
+            System.out.println(current.data);
+        }
+    }
+
     public void inorder(Bst root){
         if (root!=null){
             inorder(root.left);
@@ -131,6 +148,74 @@ public class Bst {
             preorder(root.right);
             System.out.print(root.data);
         }
+    }
+
+    public List<List<Integer>> zigzagLevelOrder(Bst root) {
+        List<List<Integer>> result = new ArrayList<>();
+        Deque<Bst> queue = new LinkedList<>();
+        if (root==null){
+            return result;
+        }
+        queue.add(root);
+        boolean reverse = false;
+
+        while(!queue.isEmpty()){
+            int size = queue.size();
+            List<Integer> list = new ArrayList<>();
+
+            for (int i = 0; i < size; i++) {
+                Bst current ;
+                if (!reverse){
+                    current = queue.pollFirst();
+                    if (current.left!=null){
+                        queue.addLast(current.left);
+                    }
+                    if (current.right!=null){
+                        queue.addLast(current.right);
+                    }
+                }else {
+                    current = queue.pollLast();
+                    if (current.right!=null){
+                        queue.addFirst(current.right);
+                    }
+                    if (current.left!=null){
+                        queue.addFirst(current.left);
+                    }
+                }
+                list.add(current.data);
+            }
+            reverse = !reverse;
+            result.add(list);
+        }
+
+        return result;
+    }
+    public List<List<Integer>> levelOrderBottom(Bst root) {
+        List<List<Integer>> result = new ArrayList<>();
+        Queue<Bst> queue = new LinkedList<>();
+
+        if (root==null){
+            return result;
+        }
+
+        queue.add(root);
+        while (!queue.isEmpty()){
+            List<Integer> list = new ArrayList<>();
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                Bst current;
+                current = queue.poll();
+                if (current.left!=null){
+                    queue.add(current.left);
+                }
+                if (current.right!=null){
+                    queue.add(current.right);
+                }
+                list.add(current.data);
+            }
+            result.add(0,list);
+        }
+        return result;
     }
 
 
@@ -158,3 +243,4 @@ public class Bst {
         tree.postorder(root);
     }
 }
+
